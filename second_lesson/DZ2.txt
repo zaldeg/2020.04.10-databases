@@ -1,0 +1,170 @@
+1.
+создал файл, фот по нему вход:
+
+aleksey@aleksey-VirtualBox:~$
+aleksey@aleksey-VirtualBox:~$ mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 51
+Server version: 8.0.19 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2. 
+
+mysql> create database example;
+Query OK, 1 row affected (0,04 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| shop               |
+| sys                |
++--------------------+
+6 rows in set (0,00 sec)
+
+mysql> use example
+Database changed
+mysql> show tables
+    -> ;
+Empty set (0,00 sec)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DBeaver:
+
+drop table if exists users;
+
+create table users(
+ id int not null,
+ name varchar(255)
+) comment 'Id и имя'
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+mysql> show tables
+    -> ;
++-------------------+
+| Tables_in_example |
++-------------------+
+| users             |
++-------------------+
+1 row in set (0,00 sec)
+
+mysql> describe users;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | NO   |     | NULL    |       |
+| name  | varchar(255) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2 rows in set (0,00 sec)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.
+
+aleksey@aleksey-VirtualBox:~$ mysqldump -u root -p example > example.sql
+Enter password:
+aleksey@aleksey-VirtualBox:~$ ll | grep example.sql
+-rw-rw-r--  1 aleksey aleksey  1839 апр 17 13:56 example.sql
+
+
+mysql> create database sample;
+Query OK, 1 row affected (0,03 sec)
+
+mysql> use sample;
+Database changed
+
+mysql> source example.sql
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,01 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,02 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,01 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+mysql> show tables
+    -> ;
++------------------+
+| Tables_in_sample |
++------------------+
+| users            |
++------------------+
+1 row in set (0,01 sec)
+
+mysql> describe users;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | NO   |     | NULL    |       |
+| name  | varchar(255) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2 rows in set (0,00 sec)
+
+
+
+4.
+
+aleksey@aleksey-VirtualBox:~$ mysqldump  -u root -p --where='true limit 100'  mysql help_keyword > test.sql
+Enter password:
+aleksey@aleksey-VirtualBox:~$ ll | grep test
+-rw-rw-r--  1 aleksey aleksey  3719 апр 17 14:15 test.sql
